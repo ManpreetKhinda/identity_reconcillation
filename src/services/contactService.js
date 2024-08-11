@@ -20,7 +20,7 @@ const identifyContact = async (email, phoneNumber) => {
       contact: {
         primaryContactId: newContact.id,
         emails: [newContact.email],
-        phoneNumbers: [newContact.phoneNumber],
+        phoneNumbers: [newContact.phonenumber],
         secondaryContactIds: [],
       },
     };
@@ -37,7 +37,7 @@ const identifyContact = async (email, phoneNumber) => {
       contact: {
         primaryContactId: primaryContact.id,
         emails: [primaryContact.email],
-        phoneNumbers: [primaryContact.phoneNumber],
+        phoneNumbers: [primaryContact.phonenumber],
         secondaryContactIds: [],
       },
     };
@@ -74,7 +74,7 @@ const formatResponse = (primarySetId, contacts) => {
     contact: {
       primaryContactId: primarySetId,
       emails: [...new Set(contacts.map((c) => c.email).filter(Boolean))],
-      phoneNumbers: [...new Set(contacts.map((c) => c.phoneNumber).filter(Boolean))],
+      phoneNumbers: [...new Set(contacts.map((c) => c.phonenumber).filter(Boolean))],
       secondaryContactIds: contacts
         .filter((c) => c.id !== primarySetId)
         .map((c) => c.id),

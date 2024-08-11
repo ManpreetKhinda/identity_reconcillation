@@ -3,17 +3,17 @@ const pool = require("../utils/db");
 const findContacts = async (email, phoneNumber) => {
   const query = `SELECT * FROM contacts 
                    WHERE ($1::text IS NULL OR email = $1) 
-                   OR ($2::text IS NULL OR phoneNumber = $2)`;
+                   OR ($2::text IS NULL OR phonenumber = $2)`;
   const { rows } = await pool.query(query, [
     email || null,
     phoneNumber || null,
   ]);
-  console.log('Contacts found:', rows);
+
   return rows;
 };
 
 const createContact = async (email, phoneNumber) => {
-  const query = `INSERT INTO contacts (email, phoneNumber, linkPrecedence, createdAt, updatedAt) 
+  const query = `INSERT INTO contacts (email, phonenumber, linkPrecedence, createdAt, updatedAt) 
                    VALUES ($1, $2, 'primary', NOW(), NOW()) RETURNING *`;
   const { rows } = await pool.query(query, [email, phoneNumber]);
   console.log('New contact created:', rows[0]);
