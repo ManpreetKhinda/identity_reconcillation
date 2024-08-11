@@ -23,8 +23,6 @@ const createTableQuery = `
     console.log('Table created successfully');
   } catch (err) {
     console.error('Error creating table:', err);
-  } finally {
-    pool.end();
   }
 })();
 const app = express();
