@@ -74,9 +74,7 @@ const formatResponse = (primarySetId, contacts) => {
     contact: {
       primaryContactId: primarySetId,
       emails: [...new Set(contacts.map((c) => c.email).filter(Boolean))],
-      phoneNumbers: [
-        ...new Set(contacts.map((c) => c.phoneNumber).filter(Boolean)),
-      ],
+      phoneNumbers: [...new Set(contacts.map((c) => c.phoneNumber).filter(Boolean))],
       secondaryContactIds: contacts
         .filter((c) => c.id !== primarySetId)
         .map((c) => c.id),
