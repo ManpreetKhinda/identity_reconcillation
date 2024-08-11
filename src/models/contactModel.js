@@ -8,6 +8,7 @@ const findContacts = async (email, phoneNumber) => {
     email || null,
     phoneNumber || null,
   ]);
+  console.log('Contacts found:', rows);
   return rows;
 };
 
@@ -15,6 +16,7 @@ const createContact = async (email, phoneNumber) => {
   const query = `INSERT INTO contacts (email, phoneNumber, linkPrecedence, createdAt, updatedAt) 
                    VALUES ($1, $2, 'primary', NOW(), NOW()) RETURNING *`;
   const { rows } = await pool.query(query, [email, phoneNumber]);
+  console.log('New contact created:', rows[0]);
   return rows[0];
 };
 
