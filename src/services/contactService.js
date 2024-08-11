@@ -64,7 +64,7 @@ const identifyContact = async (email, phoneNumber) => {
 
 // Function to find all contacts linked to the primary set
 const findContactsByPrimarySet = async (primarySetId) => {
-  const query = `SELECT * FROM Contacts WHERE linkedId = $1 OR id = $1`;
+  const query = `SELECT * FROM contacts WHERE linkedId = $1 OR id = $1`;
   const { rows } = await pool.query(query, [primarySetId]);
   return rows;
 };
